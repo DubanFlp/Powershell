@@ -6,10 +6,10 @@ $fat = Read-Host "Tipo de formato (FAT32 O NTFS)"
 
 $extension = Read-Host "Por favor introduzca  el tipo de extension  ej: .win o .esd"
 
-# Clean ! will clear any plugged-in USB stick!!
+#Limpio! borrará cualquier memoria USB
 Get-Disk | Where BusType -eq 'USB' | Clear-Disk -RemoveData -Confirm:$true -PassThru
 
-# Convert GPT
+# Convertir GPT
 if ((Get-Disk | Where BusType -eq 'USB').PartitionStyle -eq 'RAW') {
     Get-Disk | Where BusType -eq 'USB' | 
     Initialize-Disk -PartitionStyle $formato
@@ -18,30 +18,30 @@ if ((Get-Disk | Where BusType -eq 'USB').PartitionStyle -eq 'RAW') {
     Set-Disk -PartitionStyle $formato
 }
 
-# Create partition primary and format to FAT32
+# Crear partición primaria y formatear a FAT32
 $volume = Get-Disk | Where BusType -eq 'USB' | 
 New-Partition -UseMaximumSize -AssignDriveLetter | 
 Format-Volume -FileSystem $fat
 
 if (Test-Path -Path "$($volume.DriveLetter):") {
 
-    # Mount iso
+    # Monte iso
     $miso = Mount-DiskImage -ImagePath $iso -StorageType ISO -PassThru
 
-    # Driver letter
+    # Unidad 
     $dl = ($miso | Get-Volume).DriveLetter
 }
 
 if (Test-Path -Path "$($dl):\sources\install.$extension") {
 
-    # Copy ISO content to USB except install.wim
+    # Copia el contenido ISO a USB excepto install.wim
     & (Get-Command "$($env:systemroot)\system32\robocopy.exe") @(
         "$($dl):",
         "$($volume.DriveLetter):"
         ,'/S','/R:0','/Z','/XF','install.$extencion','/NP'
     )
 
-    # Split install.wim
+    # División de install.wim
     & (Get-Command "$($env:systemroot)\system32\dism.exe") @(
         '/split-image',
         "/imagefile:$($dl):\sources\install.$extension",
@@ -50,9 +50,9 @@ if (Test-Path -Path "$($dl):\sources\install.$extension") {
     )
 }
 
-# Eject USB
+# Expulsar USB
 (New-Object -comObject Shell.Application).NameSpace(17).
 ParseName("$($volume.DriveLetter):").InvokeVerb('Eject')
 
-# Dismount ISO
+#  Desmontar ISO
 Dismount-DiskImage -ImagePath $iso
