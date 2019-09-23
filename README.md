@@ -2,7 +2,7 @@
 
 `1. Enviar correo electronico`
 
-En el repositorio actualmente se encutrar un script __Enviar_correo.codesblue.ps1__ el cual como su nombre bien indica permira poder enviar un correo electronico de una manera simple y rapida permitiendolo aumentar nuestra productividad al momento de realizar dicha accion
+En el repositorio actualmente se encuentra  un script __Enviar_correo.codesblue.ps1__ el cual como su nombre bien indica permira poder enviar un correo electronico de una manera simple y rapida permitiendolo aumentar nuestra productividad al momento de realizar dicha accion
 
 ## Guia de uso de Enviar_correo.codesblue.ps1
 
