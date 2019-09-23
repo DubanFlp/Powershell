@@ -2,13 +2,13 @@
 
 `1. Enviar correo electronico`
 
-En el repositorio actualmente se encuentra  un script __Enviar_correo.codesblue.ps1__ el cual como su nombre bien indica permira poder enviar un correo electronico de una manera simple y rapida permitiendolo aumentar nuestra productividad al momento de realizar dicha accion
+En el repositorio actualmente se encuentra  un script __Enviar_correo.codesblue.ps1__ el cual como su nombre bien indica permitirá poder enviar un correo electrónico de una manera simple y rápida permitiéndolo aumentar nuestra productividad al momento de realizar dicha acción
 
 ## Guia de uso de Enviar_correo.codesblue.ps1
 
-> Importante verificar los protocolo de seguridad del provedor de correo electronico en el caso de __gmail__ deveran activar el uso de aplicaciones poco segura para que funcione de manera correcta 
+> Importante verificar los protocolo de seguridad del proveedor de correo electrónico en el caso de __gmail__ deberán activar el uso de aplicaciones poco segura para que funcione de manera correcta 
 
-Primero deberemos hacer una llamada al objecto __$enviar_correo__ el cual devolvera una lista de las propiedades que deberemos rellenar
+Primero deberemos hacer una llamada al objecto __$enviar_correo__ el cual devolverá una lista de las propiedades que deberemos rellenar
 
  ![alt text](https://github.com/codesblue/Powershell/blob/master/assets/image/correo%201.PNG) 
 
@@ -26,14 +26,14 @@ Para llenarlo solo bastara con sobre escribir el valor del la hashtable de la si
 
 6. $enviar_correo.mensaje = "Hola mundo"
 
-Por otro lado si queremos simplificar este proceso podemos hacer uso de su intefaz grafica (GUI) que fue previamente programada invocandola de la siguiente manera
+Por otro lado si queremos simplificar este proceso podemos hacer uso de su interfaz gráfica (GUI) que fue previamente programada invocándola de la siguiente manera
 
 
  $enviar_correo.GUI()
   
 ![alt text](https://github.com/codesblue/Powershell/blob/master/assets/image/correo%202.PNG) 
 
-> Es fundamental para que funcione establecer un puerto en la consola mediante   __$enviar_correo.puerto = 587__ para que funcione este metodo
+> Es fundamental para que funcione establecer un puerto en la consola mediante   __$enviar_correo.puerto = 587__ para que funcione este método
 
 
 ## Video Guia
